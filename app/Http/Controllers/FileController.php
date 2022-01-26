@@ -78,13 +78,15 @@ class FileController extends Controller
     public function showdocuments()
     {
         $documemnts = Document::Paginate(20);
-        return view('showdocuments', ['documemnts' => $documemnts]);
+        $files = File::all();
+        return view('showdocuments', ['documemnts' => $documemnts, 'files' => $files]);
     }
     public function searchdocuments(Request $req)
     {
 
         $documemnts = Document::where('file_id', $req->file_id)->orWhere('target', $req->target)->orWhere('type1', $req->type1)->Paginate(20);
-        return view('showdocuments', ['documemnts' => $documemnts]);
+        $files = File::all();
+        return view('showdocuments', ['documemnts' => $documemnts, 'files' => $files]);
     }
     public function addnewdocument()
     {

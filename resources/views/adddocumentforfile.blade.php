@@ -78,7 +78,7 @@
   </ol>
 </nav>  
         </td>
-      <td><a href="{{$document->type1}}">{{$document->path}}</a></td>
+      <td><a a target="_blank" href="{{asset("files/".$document->path)}}">{{$document->path}}</a></td>
       
     </tr>
     @endforeach

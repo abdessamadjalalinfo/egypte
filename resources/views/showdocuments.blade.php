@@ -142,7 +142,7 @@
     <label for="exampleInputPassword1" class="form-label">File Id / Target File:</label>
     <select required name="file_id"  class="form-select" aria-label="Default select example">
         <option selected value="{{$document->file_id}}">{{$document->file->id}}: {{$document->file->target}}</option>
-      @foreach(App\Models\File::all() as $file)
+      @foreach($files as $file)
           <option value="{{$file->id}}">{{$file->id}}: {{$file->target}}</option>
         @endforeach
     </select>

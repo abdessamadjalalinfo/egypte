@@ -35,6 +35,8 @@ Route::Get('/searchfiles', [App\Http\Controllers\FileController::class, 'searchf
 
 Route::Post('/search', [App\Http\Controllers\FileController::class, 'search'])->name('search');
 
+Route::GEt('/search', [App\Http\Controllers\FileController::class, 'search'])->name('search');
+
 Route::Post('/storedocument', [App\Http\Controllers\FileController::class, 'storedocument'])->name('storedocument');
 
 
