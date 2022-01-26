@@ -22,7 +22,7 @@
     <label for="exampleInputPassword1" class="form-label">Departement:</label>
     <select  name="departement" id="select-work" class="form-select" aria-label="Default select example">
        <option value="" selected></option>
-        @foreach(App\models\Departement::all() as $departement)
+        @foreach($departements as $departement)
        <option value="{{$departement->id}}">{{$departement->name}}</option>
        @endforeach
     </select>

@@ -116,8 +116,10 @@ class FileController extends Controller
         return redirect()->back()->with('success', 'Document  updated successfully! ');;
     }
     public function searchfiles()
+
     {
-        return view('searchfiles');
+        $departements = Departement::all();
+        return view('searchfiles', ['departements' => $departements]);
     }
     public function search(Request $req)
     {
