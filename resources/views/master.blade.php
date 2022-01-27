@@ -132,6 +132,40 @@
       </li>
 @endif
 
+   <li class="nav-item active">
+       
+        
+          <span>
+          <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModalnewuser" data-bs-whatever="@getbootstrap">Change Password</a>
+</span>
+<div class="modal fade" id="exampleModalnewuser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('changePassword')}}">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">New Password:</label>
+            <input type="password" name="password"class="form-control" id="recipient-name">
+          </div>
+           <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary"> Update</button>
+      </div>
+         
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+      </li>
+  
+
+
      
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -202,6 +236,7 @@
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
+                
                 
               </div>
             </li>

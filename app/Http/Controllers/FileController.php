@@ -46,6 +46,11 @@ class FileController extends Controller
         $file->user_id = $request->user_id;
         $file->scanning_date = $request->scanning_date;
         $file->number_of_pages = $request->nb_pages;
+
+        $file->vendor_name = $request->vendor_name;
+        $file->transaction_number = $request->transaction_number;
+        $file->date_of_docs = $request->date_of_docs;
+
         $file->departement_id = $request->departement;
         $file->sub_departement_id = $request->sub_departement;
         $file->save();
@@ -58,6 +63,13 @@ class FileController extends Controller
         $file->scanning_date = $request->scanning_date;
         $file->number_of_pages = $request->nb_pages;
         $file->departement_id = $request->departement;
+
+        $file->vendor_name = $request->vendor_name;
+        $file->transaction_number = $request->transaction_number;
+        $file->date_of_docs = $request->date_of_docs;
+
+
+
         $file->sub_departement_id = $request->sub_departement;
         $file->save();
         return redirect()->back()->with('success', 'File updated successfully! Please add document');
@@ -139,6 +151,14 @@ class FileController extends Controller
         }
         if ($req->filled('user_id')) {
             $files->where('user_id', $req->user_id);
+        }
+
+        if ($req->filled('vendor_name')) {
+            $files->where('vendor_name', $req->vendor_name);
+        }
+
+        if ($req->filled('transaction_number')) {
+            $files->where('transaction_number', $req->transaction_number);
         }
 
 

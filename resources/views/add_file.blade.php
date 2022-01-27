@@ -18,7 +18,7 @@
  <form method="POST" action="{{route('storefile')}}">
      @csrf
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Target:</label>
+    <label for="exampleInputEmail1" class="form-label">File ID:</label>
     <input type="text" required name="target" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
@@ -28,6 +28,19 @@
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Number of pages:</label>
     <input type="number" required name="nb_pages" class="form-control" id="exampleInputPassword1">
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Vendor Name:</label>
+    <input type="text"  name="vendor_name" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Transaction Number:</label>
+    <input type="text"  name="transaction_number" class="form-control" id="exampleInputPassword1">
+  </div>
+    <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Date of Docs:</label>
+    <input type="date"  name="date_of_docs" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Departement:</label>

@@ -47,6 +47,8 @@ Route::get('/departement', [App\Http\Controllers\DepartementController::class, '
 Route::Post('/getsubdepartements', [App\Http\Controllers\DepartementController::class, 'getsubdepartements'])->name('getsubdepartements')->middleware('auth');
 Route::Post('/gettype2', [App\Http\Controllers\DepartementController::class, 'gettype2'])->name('gettype2')->middleware('auth');
 
+Route::get('/export', [App\Http\Controllers\DemoController::class, 'export'])->name('export')->middleware('auth');
+
 
 
 Route::get('/showdocuments', [App\Http\Controllers\FileController::class, 'showdocuments'])->name('showdocuments')->middleware('auth');
@@ -87,3 +89,5 @@ Route::get('/viewer/{id}', [App\Http\Controllers\UserController::class, 'markasv
 
 
 Route::get('addnewuser', [App\Http\Controllers\UserController::class, 'addnewuser'])->name('addnewuser')->middleware('auth');
+
+Route::get('changePassword', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');

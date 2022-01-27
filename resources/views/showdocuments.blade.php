@@ -21,13 +21,13 @@
    @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))    <button style="margin: 5px;" class="btn btn-danger btn-xs delete-all" data-url="">Delete Selected</button>@endif
 
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Search</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalsearch" data-bs-whatever="@getbootstrap">Search</button>
 <a class="btn btn-success" href="{{route('showdocuments')}}">Reset</a>
 <input style="display:inline-block;width:25%" id="myInput" type="text" class="form-control" placeholder="Search..">
 
 </h1>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalsearch" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -38,7 +38,13 @@
         <form action="{{route('searchdocuments')}}">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">File id:</label>
-            <input type="text" name="file_id"class="form-control" id="recipient-name">
+            <select class="form-select" name="file_id" >
+             <option value=""></option>
+              @foreach($files as $file)
+              <option value="{{$file->id}}">{{$file->target}}</option>
+              @endforeach
+            </select>
+           
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Target :</label>
@@ -56,7 +62,7 @@
           </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary"> Search</button>
       </div>
         </form>
       </div>
@@ -68,11 +74,11 @@
 
 
 <div class="row">
-<div class="col-8">
+<div class="col-12">
 
 
 
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr class="table-active">
        <th><input type="checkbox" id="check_all"></th>
@@ -91,7 +97,7 @@
     @foreach($documemnts as $document)
     <tr id="tr_{{$document->id}}">
       <td><input type="checkbox" class="checkbox" data-id="{{$document->id}}"></td>
-      <th scope="row">{{$document->file_id}}</th>
+      <th scope="row">{{$document->file->target}}</th>
         <th>{{$document->target}}</th>
       <td>{{$document->created_at}}</td>
        <td><nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">

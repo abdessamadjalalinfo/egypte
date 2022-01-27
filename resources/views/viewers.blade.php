@@ -60,6 +60,7 @@
       <td>{{$viewer->type}}</td>
       <td><a href="{{route('markasadmin',$viewer->id)}}" class="btn btn-danger">Mark as admin </a>
     <a href="{{route('markaseditor',$viewer->id)}}" class="btn btn-success">Mark as Editor </a>
+    
     </td>
     </tr>
     @endforeach

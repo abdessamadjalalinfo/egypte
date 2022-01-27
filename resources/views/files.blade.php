@@ -21,8 +21,10 @@
 @endif
 
 <h1>Files  @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" )) <a class="btn btn-success" href="{{route('addfile')}}">+Add</a>@endif
-<a class="btn btn-success" href="{{route('searchfiles')}}">Extra Filtre</a>
+<a style="margin-left: 5px;" class="btn btn-success" href="{{route('searchfiles')}}">Extra Filtre</a>
 <input style="display:inline-block;width:25%" id="myInput" type="text" class="form-control" placeholder="Search..">
+<a class="btn btn-warning" href="{{ route('export') }}">Export CSV </a>
+
 
 
 </h1>
@@ -35,9 +37,15 @@
 <table class="table table-bordered" >
   <thead>
     <tr class="table-active">
-      <th scope="col">Target</th>
+      <th scope="col">File ID</th>
       <th scope="col">Scanning Date</th>
       <th scope="col">Added By</th>
+       <th scope="col">Transaction Number</th>
+      <th scope="col">Vendor name</th>
+       <th scope="col">Date of docs</th>
+      
+     
+     
       <th scope="col">Number of Pages</th>
        <th scope="col">Departement</th>
        <th scope="col">Sub Departement</th>
@@ -54,6 +62,9 @@
       <th scope="row">{{$file->target}}</th>
       <td>{{$file->scanning_date}}</td>
        <td>{{$file->user()->first()->name}}</td>
+       <td>{{$file->transaction_number}}</td>
+        <td>{{$file->vendor_name}}</td>
+       <td>{{$file->date_of_docs}}</td>
        <td>{{$file->number_of_pages}}</td>
        <td>{{$file->departement()->first()->name}}</td>
        <td>{{$file->subdepartement()->first()->name}}</td>
@@ -61,9 +72,9 @@
           @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))
 
       <td>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Edit</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$file->id}}" data-bs-whatever="@getbootstrap">Edit</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{$file->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,6 +97,21 @@
     <label for="exampleInputPassword1" class="form-label">Number of pages:</label>
     <input type="number" required name="nb_pages" value="{{$file->number_of_pages}}" class="form-control" id="exampleInputPassword1">
   </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Vendor Name:</label>
+    <input type="text" required name="vendor_name" value="{{$file->vendor_name}}" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Transaction Number:</label>
+    <input type="text" required name="transaction_number" value="{{$file->transaction_number}}" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Date of Docs:</label>
+    <input type="date" required name="date_of_docs" value="{{$file->date_of_docs}}" class="form-control" id="exampleInputPassword1">
+  </div>
+
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Departement:</label>
     <select required name="departement" id="select-work" class="form-select select-work" aria-label="Default select example">
