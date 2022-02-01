@@ -41,7 +41,7 @@ class FileController extends Controller
     }
     public function storefile(Request $request)
     {
-dd($request);
+
         $file = new File();
         $file->target = $request->target;
         $file->user_id = $request->user_id;
@@ -52,7 +52,7 @@ dd($request);
         $file->transaction_number = $request->transaction_number;
         $file->date_of_docs = $request->date_of_docs;
 
-        $file->departement_id = $request->departement;
+        $file->departement_id = $request->departement ?? $request->departement_;
         $file->sub_departement_id = $request->sub_departement;
         $file->save();
         return redirect()->route('addnewdocumentforfile', $file->id)->with('success', 'File created successfully! Please add document');
