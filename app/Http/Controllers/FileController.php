@@ -41,7 +41,7 @@ class FileController extends Controller
     }
     public function storefile(Request $request)
     {
-        dd($request);
+
         $file = new File();
         $file->target = $request->target;
         $file->user_id = $request->user_id;
