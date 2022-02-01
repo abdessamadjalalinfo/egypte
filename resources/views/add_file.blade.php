@@ -14,56 +14,60 @@
 <h1>Add New File</h1>
 
 <div class="row">
-    <div class="col-3">
+    
  <form method="POST" action="{{route('storefile')}}">
      @csrf
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">File ID:</label>
-    <input type="text" required name="target" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Scanning date:</label>
-    <input type="date" required name="scanning_date" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Number of pages:</label>
-    <input type="number" required name="nb_pages" class="form-control" id="exampleInputPassword1">
-  </div>
-   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Vendor Name:</label>
-    <input type="text"  name="vendor_name" class="form-control" id="exampleInputPassword1">
-  </div>
-
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Transaction Number:</label>
-    <input type="text"  name="transaction_number" class="form-control" id="exampleInputPassword1">
-  </div>
-    <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Date of Docs:</label>
-    <input type="date"  name="date_of_docs" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Departement:</label>
-    <select required name="departement" id="select-work" class="form-select" aria-label="Default select example">
-       @foreach($departements as $departement)
-       <option value="{{$departement->id}}">{{$departement->name}}</option>
-       @endforeach
-    </select>
-  </div>
-
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Sub Departement:</label>
-    <select required name="sub_departement" id="sub" class="form-select" aria-label="Default select example">
+     <div class="row"> 
+     <div class="col-4">
        
-    </select>
-  </div>
-  <div class="mb-3">
-      <label for="disabledSelect" class="form-label">Added By:</label>
-      <select name="user_id" id="disabledSelect" class="form-select">
-        <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
+        <label for="exampleInputEmail1" class="form-label">File ID:</label>
+        <input type="text" required name="target" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      
+     </div>
+   
+    
+      <div class="col-4">
+        <label for="exampleInputPassword1" class="form-label">Number of pages:</label>
+        <input type="number" required name="nb_pages" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="col-4">
+        <label for="exampleInputPassword1" class="form-label">Vendor Name:</label>
+        <input type="text" required  name="vendor_name" class="form-control" id="exampleInputPassword1">
+      </div>
+
+      <div class="col-4">
+        <label for="exampleInputPassword1" class="form-label">Transaction Number:</label>
+        <input type="text"  name="transaction_number" required class="form-control" id="exampleInputPassword1">
+      </div>
+    <div class="col-4">
+    <label for="exampleInputPassword1" class="form-label">Date of Docs:</label>
+    <input type="date"  name="date_of_docs" required class="form-control" id="exampleInputPassword1">
+    </div>
+    <div div class="col-4">
+      <label for="exampleInputPassword1" class="form-label">Departement:</label>
+      <select required name="departement " id="select-work" class="form-select" aria-label="Default select example">
+        @foreach($departements as $departement)
+        <option value="{{$departement->id}}">{{$departement->name}}</option>
+        @endforeach
       </select>
     </div>
 
+      <div class="col-4">
+        <label for="exampleInputPassword1" class="form-label">Sub Departement:</label>
+        <select required name="sub_departement" id="sub" class="form-select" aria-label="Default select example">
+        </select>
+      </div>
+      <div class="col-4">
+          <label for="disabledSelect" class="form-label">Added By:</label>
+          <select name="user_id" id="disabledSelect" class="form-select">
+            <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
+          </select>
+      </div>
+
+
+    </div>
+  </div>
+<br>
   <button type="submit" class="btn btn-primary">Add</button>
    </form>
     </div>

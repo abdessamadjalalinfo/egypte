@@ -20,10 +20,12 @@
 </div>
 @endif
 
-<h1>Files  @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" )) <a class="btn btn-success" href="{{route('addfile')}}">+Add</a>@endif
-<a style="margin-left: 5px;" class="btn btn-success" href="{{route('searchfiles')}}">Extra Filtre</a>
+<h1>Files  @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" )) <a class="btn btn-success" href="{{route('addfile')}}"><i class="fas fa-plus-square"></i>
+
+  Add</a>@endif
+<a style="margin-left: 5px;" class="btn btn-success" href="{{route('searchfiles')}}"><i class="fas fa-filter"></i> Advanced Filtre</a>
 <input style="display:inline-block;width:25%" id="myInput" type="text" class="form-control" placeholder="Search..">
-<a class="btn btn-warning" href="{{ route('export') }}">Export CSV </a>
+<a class="btn btn-warning" href="{{ route('export') }}"> <i class="fas fa-file-csv"></i>Export </a>
 
 
 
@@ -34,7 +36,7 @@
 
 </div>
 
-<table class="table table-bordered" >
+<table style="font-size: 12px;" class="table table-bordered" >
   <thead>
     <tr class="table-active">
       <th scope="col">File ID</th>
@@ -72,7 +74,9 @@
           @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))
 
       <td>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$file->id}}" data-bs-whatever="@getbootstrap">Edit</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$file->id}}" data-bs-whatever="@getbootstrap"><i class="fas fa-edit"></i>
+
+</button>
 
 <div class="modal fade" id="exampleModal{{$file->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -85,34 +89,32 @@
          <form method="POST" action="{{route('editfile')}}">
           <input type="hidden" name="id" value="{{$file->id}}">
      @csrf
-  <div class="mb-3">
+     <div class="row">
+  <div class="col-6">
     <label for="exampleInputEmail1" class="form-label">Target:</label>
     <input type="text" required name="target" value="{{$file->target}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Scanning date:</label>
-    <input type="date" required name="scanning_date" value="{{$file->scanning_date}}" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
+ 
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Number of pages:</label>
     <input type="number" required name="nb_pages" value="{{$file->number_of_pages}}" class="form-control" id="exampleInputPassword1">
   </div>
-  <div class="mb-3">
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Vendor Name:</label>
     <input type="text" required name="vendor_name" value="{{$file->vendor_name}}" class="form-control" id="exampleInputPassword1">
   </div>
 
-  <div class="mb-3">
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Transaction Number:</label>
     <input type="text" required name="transaction_number" value="{{$file->transaction_number}}" class="form-control" id="exampleInputPassword1">
   </div>
 
-  <div class="mb-3">
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Date of Docs:</label>
     <input type="date" required name="date_of_docs" value="{{$file->date_of_docs}}" class="form-control" id="exampleInputPassword1">
   </div>
 
-  <div class="mb-3">
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Departement:</label>
     <select required name="departement" id="select-work" class="form-select select-work" aria-label="Default select example">
        @foreach(App\Models\Departement::all() as $departement)
@@ -121,7 +123,7 @@
     </select>
   </div>
 
-  <div class="mb-3">
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Sub Departement:</label>
     <select required name="sub_departement" id="sub" class="form-select sub" aria-label="Default select example">
        
@@ -133,7 +135,7 @@
         <button type="submit" class="btn btn-primary">Update</button>
       </div>
 
-  
+    </div>
    </form>
       </div>
     

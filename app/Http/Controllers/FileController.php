@@ -44,7 +44,7 @@ class FileController extends Controller
         $file = new File();
         $file->target = $request->target;
         $file->user_id = $request->user_id;
-        $file->scanning_date = $request->scanning_date;
+        $file->scanning_date = date("Y-m-d");
         $file->number_of_pages = $request->nb_pages;
 
         $file->vendor_name = $request->vendor_name;
@@ -60,7 +60,7 @@ class FileController extends Controller
     {
         $file =  File::find($request->id);
         $file->target = $request->target;
-        $file->scanning_date = $request->scanning_date;
+     
         $file->number_of_pages = $request->nb_pages;
         $file->departement_id = $request->departement;
 

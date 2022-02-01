@@ -6,19 +6,20 @@
 <div class="col-5">
  <form method="POST" action="{{route('search')}}">
      @csrf
-  <div class="mb-3">
+     <div class="row">
+  <div class="col-6">
     <label for="exampleInputEmail1" class="form-label">File Id:</label>
     <input type="text"  name="target" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
-  <div class="mb-3">
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Scanning date:</label>
     <input type="date"  name="scanning_date" class="form-control" id="exampleInputPassword1">
   </div>
-  <div class="mb-3">
+  <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Number of pages:</label>
     <input type="number"  name="nb_pages" class="form-control" id="exampleInputPassword1">
   </div>
-   <div class="mb-3">
+   <div class="col-6">
     <label for="exampleInputPassword1" class="form-label">Vendor Name:</label>
     <input type="text"  name="vendor_name" class="form-control" id="exampleInputPassword1">
   </div>
@@ -46,10 +47,12 @@
         @endforeach
       </select>
     </div>
+  </div> 
 
   <button type="submit" class="btn btn-primary">Search</button>
    <a href="{{route('file')}}" class="btn btn-success">Show All</a>
-   </form>
+  
+  </form>
 
 
 

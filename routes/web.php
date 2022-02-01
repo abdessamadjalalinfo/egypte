@@ -56,6 +56,9 @@ Route::get('/searchdocuments', [App\Http\Controllers\FileController::class, 'sea
 Route::get('/addnewdocument', [App\Http\Controllers\FileController::class, 'addnewdocument'])->name('addnewdocument')->middleware('auth');
 Route::get('/updatedocument', [App\Http\Controllers\FileController::class, 'updatedocument'])->name('updatedocument')->middleware('auth');
 
+Route::get('/myprofil', [App\Http\Controllers\UserController::class, 'myprofil'])->name('myprofil')->middleware('auth');
+
+
 Route::delete('delete-multiple-document', [App\Http\Controllers\FileController::class, 'deletemultiple'])->name('category.multiple-delete')->middleware('auth');
 
 

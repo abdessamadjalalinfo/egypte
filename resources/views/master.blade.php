@@ -119,7 +119,9 @@
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="fas fa-users"></i>
+
+
           <span>Users</span>
         </a>
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -136,32 +138,8 @@
        
         
           <span>
-          <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModalnewuser" data-bs-whatever="@getbootstrap">Change Password</a>
 </span>
-<div class="modal fade" id="exampleModalnewuser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="{{route('changePassword')}}">
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">New Password:</label>
-            <input type="password" name="password"class="form-control" id="recipient-name">
-          </div>
-           <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary"> Update</button>
-      </div>
-         
-        </form>
-      </div>
-     
-    </div>
-  </div>
-</div>
+
       </li>
   
 
@@ -226,12 +204,19 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
+              
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                
                 
                 
                 <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{route('myprofil')}}" >
+                  <i class="fas fa-user-circle"></i>
+
+
+                  Profil
+                </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout

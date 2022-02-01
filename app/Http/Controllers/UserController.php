@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -10,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function myprofil()
+    {
+        return view('myprofil');
+    }
+
     public function admins()
     {
         return view('admins', ['admins' => User::all()->where('type', 'admin')]);
@@ -56,8 +62,17 @@ class UserController extends Controller
     }
     public function changePassword(Request $request)
     {
+        
+    
+
+        
         $user = User::find(Auth::user()->id);
-        $user->password = Hash::make($request->password);
+        if($request->password){
+            $user->password = Hash::make($request->password);
+        }
+        $user->name=$request->name;
+
+        
         //dd($request->password);
         $user->save();
         return redirect()->back();

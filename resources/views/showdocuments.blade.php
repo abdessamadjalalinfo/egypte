@@ -17,11 +17,17 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<h1>Documents  @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))<a class="btn btn-success" href="{{route('addnewdocument')}}">+Add</a>@endif
-   @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))    <button style="margin: 5px;" class="btn btn-danger btn-xs delete-all" data-url="">Delete Selected</button>@endif
+<h1>Documents  @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))<a class="btn btn-success" href="{{route('addnewdocument')}}"><i class="fas fa-plus-square"></i>
+
+</a>@endif
+   @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))    <button style="margin: 5px;" class="btn btn-danger btn-xs delete-all" data-url=""><i class="far fa-trash-alt"></i>
+
+   </button>@endif
 
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalsearch" data-bs-whatever="@getbootstrap">Search</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalsearch" data-bs-whatever="@getbootstrap"><i class="fas fa-search"></i>
+
+</button>
 <a class="btn btn-success" href="{{route('showdocuments')}}">Reset</a>
 <input style="display:inline-block;width:25%" id="myInput" type="text" class="form-control" placeholder="Search..">
 
@@ -78,7 +84,7 @@
 
 
 
-<table class="table table-bordered">
+<table  style="font-size: 12px;" class="table table-bordered">
   <thead>
     <tr class="table-active">
        <th><input type="checkbox" id="check_all"></th>
@@ -109,8 +115,10 @@
 
       <td><a target="_blank" href="{{asset("files/".$document->path)}}"> <i class="fas fa-fw fa-folder"></i>{{$document->path}}</a></td>
      @if(Auth::user()->type=="admin" or (Auth::user()->type=="editor" ))
-      <td><a class="btn btn-danger" target="_blank" href="{{route('deletedocument',$document->id)}}">Delete</a>
-          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{$document->id}}" data-bs-whatever="@getbootstrap">Edit</button>
+      <td><a class="btn btn-danger" target="_blank" href="{{route('deletedocument',$document->id)}}"><i class="far fa-trash-alt"></i>
+
+      </a>
+          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{$document->id}}" data-bs-whatever="@getbootstrap"><i class="fas fa-edit"></i></button>
 
 <div class="modal fade" id="exampleModal{{$document->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

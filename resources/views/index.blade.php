@@ -78,4 +78,135 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <div class="chart-container">
+              <div class="chart has-fixed-height" id="pie_basic"></div>
+            </div>
+            
+          </div>
+          <div class="row">
+
+          <div class="col-5" id="container"></div>
+
+          
+            <div class="col-md-6">
+              <form action="{{route('index')}}">
+            <div class="row">
+              <div class="col-5">
+              <select name="year" class="form-select" aria-label="Default select example">
+                <option  >year</option>
+                <option value="2021" >2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+              </select>
+            </div>
+           <div class="col-5">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-eye"></i>
+
+            </button>
+
+           </div>
+          </div>
+        </form>
+          
+              
+                <div class="panel panel-default">
+                   
+                    <div class="panel-body">
+                        <canvas id="canvas" height="280" width="600"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <script src="https://code.highcharts.com/highcharts.js"></script>
+          <script type="text/javascript">
+            var userData = <?php echo json_encode($userData)?>;
+        
+            Highcharts.chart('container', {
+                title: {
+                    text: 'New User Growth, 2022'
+                },
+                subtitle: {
+                    text: 'Source: positronx.io'
+                },
+                xAxis: {
+                    categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                        'October', 'November', 'December'
+                    ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of New Users'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+                plotOptions: {
+                    series: {
+                        allowPointSelect: true
+                    }
+                },
+                series: [{
+                    name: 'New Users',
+                    data: userData
+                }],
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+            });
+        
+        </script>
+
+        <script>
+    var year = <?php echo $year; ?>;
+    var user = <?php echo $files; ?>;
+    var barChartData = {
+        labels: year,
+        datasets: [{
+            label: 'Files',
+            backgroundColor: "pink",
+            data: user
+        }]
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Files By Months in <?php echo $current;?> '
+                }
+            }
+        });
+    };
+</script>
+
+
 @endsection
